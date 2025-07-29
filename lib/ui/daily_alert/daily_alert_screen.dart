@@ -1,4 +1,6 @@
+import 'package:distribution_obj_app/infrastructure/constant/color_constant.dart';
 import 'package:distribution_obj_app/infrastructure/constant/image_constant.dart';
+import 'package:distribution_obj_app/infrastructure/routes/route_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +14,7 @@ class DailyAlertsScreen extends StatelessWidget {
     return GetBuilder<DailyAlertsController>(
       init: DailyAlertsController(),
       builder: (controller) => Scaffold(
-        backgroundColor: const Color(0xFF007BFF),
+        backgroundColor: ColorConstant.primary,
         body: SafeArea(
           child: Column(
             children: [
@@ -84,6 +86,10 @@ class DailyAlertsScreen extends StatelessWidget {
                                   item.status=ChallengeStatus.completed;
                                   }
                                   controller.update();
+                                  if(item.status==ChallengeStatus.completed){
+                                  Get.toNamed(RouteConstants.objectiveAchievement);
+
+                                  }
                                 },
                                 child: Row(
                                   children: [

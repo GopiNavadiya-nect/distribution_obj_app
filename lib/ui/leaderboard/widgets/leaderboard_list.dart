@@ -1,7 +1,10 @@
 import 'package:distribution_obj_app/infrastructure/constant/method_constant.dart';
 import 'package:distribution_obj_app/ui/leaderboard/leaderboard_controller.dart';
+import 'package:distribution_obj_app/ui/leaderboard/redeem_bonus/redeem_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../infrastructure/routes/route_constants.dart' show RouteConstants;
 
 class LeaderboardList extends StatelessWidget {
   const LeaderboardList({super.key});
@@ -28,20 +31,28 @@ class LeaderboardList extends StatelessWidget {
             final isCurrentUser =
                 index + 1 == controller.userRank.value;
 
-            return ListTile(
-              leading: CircleAvatar(
-                backgroundColor: MethodConstant.getRankColor(index + 1),
-                child: Text(
-                  "${index + 1}",
-                  style: const TextStyle(color: Colors.white),
+            return InkWell(
+               onTap: () {
+
+                 Get.put(RedeemController()).availableBonus.value=double.parse(user['bonus'].toString());
+                 Get.toNamed(RouteConstants.redeem);
+
+               },
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: MethodConstant.getRankColor(index + 1),
+                  child: Text(
+                    "${index + 1}",
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 ),
-              ),
-              title: Text(user['name']),
-              trailing: Text(
-                "€${user['bonus']}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: isCurrentUser ? Colors.green : Colors.black,
+                title: Text(user['name']),
+                trailing: Text(
+                  "€${user['bonus']}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isCurrentUser ? Colors.green : Colors.black,
+                  ),
                 ),
               ),
             );

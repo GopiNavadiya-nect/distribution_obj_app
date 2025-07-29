@@ -1,5 +1,6 @@
 import 'package:distribution_obj_app/infrastructure/constant/color_constant.dart';
 import 'package:distribution_obj_app/infrastructure/constant/image_constant.dart';
+import 'package:distribution_obj_app/infrastructure/routes/route_constants.dart';
 import 'package:distribution_obj_app/ui/home/widgets/build_period_selector.dart';
 import 'package:distribution_obj_app/ui/home/widgets/info_card.dart';
 import 'package:distribution_obj_app/ui/home/widgets/progress_selection_view.dart';
@@ -55,9 +56,12 @@ class HomeScreen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InfoCard(
+                        onTap: () => Get.toNamed(RouteConstants.objectiveSelection),
                         title: "Today\'s\nBonus",
                         value: "€${controller.todayBonus.value}",
                         color: ColorConstant.yellow700,
@@ -65,6 +69,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(width: 12),
                       InfoCard(
+                        onTap: () => Get.toNamed(RouteConstants.objectiveSelection),
                         title: "Earned\nThis Year",
                         value: "€${controller.earnedThisYear.value}",
                         color:ColorConstant.orange,
@@ -72,6 +77,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(width: 12),
                       InfoCard(
+                        onTap: () => Get.toNamed(RouteConstants.objectiveSelection),
                         title: "Total\nPotential",
                         value: "€${controller.totalPotential.value}",
                         color: ColorConstant.green,

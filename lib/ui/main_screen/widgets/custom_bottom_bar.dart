@@ -20,10 +20,7 @@ class CustomBottomBar extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(100),
-            blurRadius: 6,
-          ),
+          BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 6),
         ],
       ),
       child: Row(
@@ -32,25 +29,33 @@ class CustomBottomBar extends StatelessWidget {
           _buildItem(
             icon: Icons.home,
             label: "Home",
-            color: selectedIndex == 0 ? ColorConstant.blue : ColorConstant.grey,
+            color: selectedIndex == 0
+                ? ColorConstant.primary
+                : ColorConstant.grey,
             onTap: () => onItemTap(0),
           ),
           _buildItem(
             icon: Icons.emoji_events,
             label: "Leaderboard",
-            color: selectedIndex == 1 ? ColorConstant.blue : ColorConstant.grey,
+            color: selectedIndex == 1
+                ? ColorConstant.primary
+                : ColorConstant.grey,
             onTap: () => onItemTap(1),
           ),
           _buildItem(
             icon: Icons.check_circle,
             label: "Challenges",
-            color: selectedIndex == 2 ? ColorConstant.orange : ColorConstant.grey,
+            color: selectedIndex == 2
+                ? ColorConstant.orange
+                : ColorConstant.grey,
             onTap: () => onItemTap(2),
           ),
           _buildItem(
             icon: Icons.card_giftcard,
             label: "Rewards",
-            color: selectedIndex == 3 ? ColorConstant.green :ColorConstant.grey,
+            color: selectedIndex == 3
+                ? ColorConstant.green
+                : ColorConstant.grey,
             onTap: () => onItemTap(3),
           ),
         ],
@@ -73,7 +78,11 @@ class CustomBottomBar extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             label,
-            style: TextStyle(fontSize: 12, color: color, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: 12,
+              color: color,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
